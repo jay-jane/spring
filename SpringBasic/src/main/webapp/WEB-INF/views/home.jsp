@@ -6,6 +6,7 @@
 </head>
 <body>
 
-<h1>Hello world!</h1>
+	<h1>Hello world!</h1>
+	${msg } <!-- 일회성 데이터, 새로고침 시 사라짐 -->
 </body>
 </html>
