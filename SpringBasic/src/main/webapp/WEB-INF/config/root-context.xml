@@ -11,7 +11,7 @@
 	<!-- 데이터베이스 정보는 외부 파일로 관리 -->
 	<!-- classpath - 자바/리소스 경로 -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:/DB-config/hikari.properties" />
+		<property name="location" value="classpath:/DB-config/hikari.properties" />
 	</bean>
 	
 	<!-- Namespaces > jdbc 체크 -->
@@ -39,9 +39,10 @@
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 데이터베이스 정보 전달 -->
 		<property name="dataSource" ref="ds" /> <!-- 'ds' Bean객체 주입 -->
+		<property name="configLocation" value = "classpath:/mybatis-config/mybatis-config.xml"/>
 	</bean>
 	
 	<!-- MyBatis xml의 위치 지정 -->
-	<mybatis-spring:scan base-package="com.simple.basic.mapper" />
+	<mybatis-spring:scan base-package="com.simple.*" />
 
 </beans>

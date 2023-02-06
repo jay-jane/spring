@@ -27,5 +27,4 @@
 	<!-- service 영역을 Bean으로 생성 -->
 	<!-- <beans:bean class="com.simple.service.ScoreServiceImpl" /> -->
 	
-	
 </beans:beans>

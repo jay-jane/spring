@@ -1,6 +1,7 @@
 package com.simple.command;
 
 public class ScoreVO { //DTO
+	
 	private int num;
 	private String name;
 	private String kor;
@@ -8,6 +9,7 @@ public class ScoreVO { //DTO
 	
 	public ScoreVO() {
 	}
+	
 	public ScoreVO(int num, String name, String kor, String eng) {
 		super();
 		this.num = num;

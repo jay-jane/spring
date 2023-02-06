@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.simple.command.ScoreVO;
+import com.simple.command.dto.ScoreListResDTO;
+import com.simple.command.dto.ScoreRegistReqDTO;
 
 @Repository
 public class ScoreDAOImpl implements ScoreDAO {
@@ -20,7 +22,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 	private DataSource source;
 
 	@Override
-	public void regist(ScoreVO vo) {
+	public void regist(ScoreRegistReqDTO registerDTO) {
 
 		String sql = "insert into score(name, kor, eng) values(?, ?, ?)";
 		Connection conn = null;
@@ -29,9 +31,9 @@ public class ScoreDAOImpl implements ScoreDAO {
 			conn = source.getConnection();
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getName());
-			pstmt.setString(2, vo.getKor());
-			pstmt.setString(3, vo.getEng());
+			pstmt.setString(1, registerDTO.getName());
+			pstmt.setString(2, registerDTO.getKor());
+			pstmt.setString(3, registerDTO.getEng());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -108,6 +110,37 @@ public class ScoreDAOImpl implements ScoreDAO {
 					e.printStackTrace();
 				}
 		}
+	}
+
+	@Override
+	public ScoreVO detail(int num) {
+		String sql = "select * from score where num = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ScoreVO vo = new ScoreVO();
+		try {
+			conn = source.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo.setNum(rs.getInt("num"));
+				vo.setName(rs.getString("name"));
+				vo.setKor(rs.getString("kor"));
+				vo.setEng(rs.getString("eng"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return vo;
 	}
 
 	//	//데이터베이스역할(임의)

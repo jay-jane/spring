@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="de.mklinger.tomcat.juli.slf4j" type="repository">
+    <properties maven-id="de.mklinger.tomcat:tomcat-juli-slf4j:8.5.19" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/mklinger/tomcat/tomcat-juli-slf4j/8.5.19/tomcat-juli-slf4j-8.5.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

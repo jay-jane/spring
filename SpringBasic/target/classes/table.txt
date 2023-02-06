@@ -5,3 +5,10 @@ create table score (
     kor int default 0,
     eng int default 0
 );
+
+create table board (
+	id int primary key auto_increment, # PK이름은 id
+    name varchar(14) not null,
+    title varchar(50) not null,
+    content varchar(500) not null
+);
